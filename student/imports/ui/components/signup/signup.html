@@ -1,0 +1,16 @@
+<template name="signup">
+  <h2>Ajouter un élève</h2>
+  <ul>
+    <li>
+      <form class="add-student">
+        <input type="file" name="photo" required>
+        <input type="text" name="firstname" placeholder="Prénom" required>
+        <input type="text" name="lastname" placeholder="Nom" required>
+        <input type="submit" name="submit" value="Valider">
+      </form>
+    </li>
+    {{#each links}}
+      <li><a href="" target="_blank">{{firstname}}</a></li>
+    {{/each}}
+  </ul>
+</template>
