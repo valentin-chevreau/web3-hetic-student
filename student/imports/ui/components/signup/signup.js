@@ -20,7 +20,7 @@ import './signup.html';
 //     const firstname = target.firetname;
 //     const lastname = target.lastname;
 //
-//     Meteor.call('links.insert', firstname.value, lastname.value, (error) => {
+//     Meteor.call('links.insert', firstname.value, lastname.value, class.value (error) => {
 //       if (error) {
 //         alert(error.error);
 //       } else {
