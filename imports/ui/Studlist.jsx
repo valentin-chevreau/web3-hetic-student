@@ -7,7 +7,7 @@ import { Students } from '../api/students.js';
 import Student from './Student.jsx';
 
 class App extends Component {
-    handleSubmit(event) {
+     handleSubmit(event) {
         event.preventDefault();
 
         const firstname = ReactDOM.findDOMNode(this.refs.firstnameS).value.trim();
@@ -23,36 +23,45 @@ class App extends Component {
 
         ReactDOM.findDOMNode(this.refs.firstnameS).value = '';
         ReactDOM.findDOMNode(this.refs.lastnameS).value = '';
-        ReactDOM.findDOMNode(this.refs.classeS).value = '';
     }
 
     renderStudents() {
-        return this.props.students.map((student) => (
+         var studentC = this.props.students.filter(function (lib) {
+            return lib.classe == selectClasse.value;
+         });
+         return studentC.map((student) => (
             <Student key={student._id} student={student} />
-        ));
+         ));
     }
 
     render() {
         return (
             <div className="container">
                 <header>
-                    <h1>Students List</h1>
-
-                    <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
+                       <form className="new-student" onSubmit={this.handleSubmit.bind(this)} >
+                       <h1>Liste des étudiants
+                       <select
+                           ref="classeS"
+                           placeholder="Classe"
+                           id="selectClasse"
+                           required
+                           onChange={this.renderStudents.bind(this)}
+                       >
+                          <option value="Web1">Web1</option>
+                          <option value="Web2">Web2</option>
+                          <option value="Web3">Web3</option>
+                       </select></h1>
                         <input
                             type="text"
                             ref="firstnameS"
                             placeholder="Prénom"
+                            required
                         />
                         <input
                             type="text"
                             ref="lastnameS"
                             placeholder="Nom"
-                        />
-                        <input
-                            type="text"
-                            ref="classeS"
-                            placeholder="Classe"
+                            required
                         />
                         <input
                             type="submit"
@@ -61,7 +70,6 @@ class App extends Component {
                         />
                     </form>
                 </header>
-
                 <ul>
                     {this.renderStudents()}
                 </ul>
