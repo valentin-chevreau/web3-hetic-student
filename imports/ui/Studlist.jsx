@@ -25,6 +25,22 @@ class App extends Component {
         ReactDOM.findDOMNode(this.refs.lastnameS).value = '';
     }
 
+    handleChange(event) {
+
+      const firstname = "";
+      const lastname = "";
+      const classe = "";
+
+      var inS = Students.insert({
+           firstname,
+           lastname,
+           classe,
+           createdAt: new Date(),
+      });
+
+      Students.remove(inS);
+  }
+
     renderStudents() {
          var studentC = this.props.students.filter(function (lib) {
             return lib.classe == selectClasse.value;
@@ -45,7 +61,7 @@ class App extends Component {
                            placeholder="Classe"
                            id="selectClasse"
                            required
-                           onChange={this.renderStudents.bind(this)}
+                           onChange={this.handleChange.bind(this)}
                        >
                           <option value="Web1">Web1</option>
                           <option value="Web2">Web2</option>
